@@ -118,7 +118,9 @@ export default function EventRegistrationsPage() {
     if (!company || !registrations.length) return;
     
     // Convert registrations to array format for CSV export
+    // Make sure to use the headers array order to maintain column ordering
     const data = registrations.map((reg) => {
+      // Explicitly map each header to its corresponding registration value to maintain order
       return headers.map((header) => reg[header] || '');
     });
     

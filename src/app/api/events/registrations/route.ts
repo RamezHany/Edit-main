@@ -94,9 +94,43 @@ export async function GET(request: NextRequest) {
         return registration;
       });
     
+    // Make sure headers are returned in the same order as defined in the POST event creation
+    // This ensures the CSV export will have columns in the expected order
+    const orderedHeaders = [
+      'Registration Date',
+      'Name',
+      'National ID',
+      'Age',
+      'Gender',
+      'Phone',
+      'Email',
+      'Status',
+      'University',
+      'College',
+      'Faculty',
+      'Level',
+    ].filter(header => headers.includes(header));
+    
+    // Add any additional headers not in our predefined list
+    headers.forEach(header => {
+      if (!orderedHeaders.includes(header)) {
+        orderedHeaders.push(header);
+      }
+    });
+    
+    // Create ordered registrations to ensure data matches header order precisely
+    const orderedRegistrations = registrations.map(reg => {
+      const orderedReg: Record<string, string> = {};
+      // Add properties in the exact order of orderedHeaders
+      orderedHeaders.forEach(header => {
+        orderedReg[header] = reg[header] || '';
+      });
+      return orderedReg;
+    });
+    
     return NextResponse.json({
-      headers,
-      registrations,
+      headers: orderedHeaders,
+      registrations: orderedRegistrations,
       total: registrations.length,
     });
   } catch (error) {
