@@ -207,7 +207,6 @@ export async function POST(request: NextRequest) {
       'Status', // Student or Graduate
       'National ID',
       'Registration Date',
-      'Image', // For the event banner
       'Age', // Added field for age
       'University', // Added field for university
       'Level', // Added field for student level
@@ -215,6 +214,7 @@ export async function POST(request: NextRequest) {
       'EventDescription', // Event description
       'EventDate', // Event date
       'EventStatus', // enabled or disabled
+      'Image', // For the event bannere
     ];
     
     // Create the event table in the company sheet
