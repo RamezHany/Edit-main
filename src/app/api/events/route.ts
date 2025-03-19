@@ -199,18 +199,18 @@ export async function POST(request: NextRequest) {
     
     // Define headers for the event table
     const headers = [
+      'Registration Date',
       'Name',
+      'National ID',
+      'Age', // Added field for age
+      'Gender',
       'Phone',
       'Email',
-      'Gender',
-      'College',
       'Status', // Student or Graduate
-      'National ID',
-      'Registration Date',
-      'Age', // Added field for age
       'University', // Added field for university
-      'Level', // Added field for student level
+      'College',
       'Faculty', // Added field for faculty
+      'Level', // Added field for student level
       'EventDescription', // Event description
       'EventDate', // Event date
       'EventStatus', // enabled or disabled
