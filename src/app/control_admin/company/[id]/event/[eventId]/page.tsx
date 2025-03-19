@@ -8,8 +8,8 @@ import { exportToPDF, exportToCSV } from '@/utils/export';
 
 interface Registration {
   Name: string;
-  Phone: string;
   Email: string;
+  Phone: string;
   Gender: string;
   College: string;
   Status: string;
